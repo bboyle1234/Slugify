@@ -8,7 +8,7 @@ namespace Slugify
 {
     public class SlugHelper
     {
-        protected Config _config { get; set; }
+        protected Config _config { get;  }
 
         public SlugHelper() : this(new Config()) { }
 
@@ -56,7 +56,8 @@ namespace Slugify
         protected string RemoveDiacritics(string str)
         {
             var stFormD = str.Normalize(NormalizationForm.FormD);
-            var sb = new StringBuilder();
+
+            var sb = new StringBuilder(str.Length);
 
             for (int ich = 0; ich < stFormD.Length; ich++)
             {
@@ -74,7 +75,7 @@ namespace Slugify
         {
             var sb = new StringBuilder(str);
 
-            foreach (KeyValuePair<string, string> replacement in replacements)
+            foreach (var replacement in replacements)
             {
                 sb = sb.Replace(replacement.Key, replacement.Value);
             }

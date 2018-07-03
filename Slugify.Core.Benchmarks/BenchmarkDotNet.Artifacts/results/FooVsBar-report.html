@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>FooVsBar</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.10.14, OS=Windows 10.0.17134
+Intel Core i7-6600U CPU 2.60GHz (Skylake), 1 CPU, 4 logical and 2 physical cores
+.NET Core SDK=2.1.300
+  [Host]   : .NET Core 2.1.0 (CoreCLR 4.6.26515.07, CoreFX 4.6.26515.06), 64bit RyuJIT
+  ShortRun : .NET Core 2.1.0 (CoreCLR 4.6.26515.07, CoreFX 4.6.26515.06), 64bit RyuJIT
+</code></pre>
+<pre><code>Job=ShortRun  LaunchCount=1  TargetCount=3  
+WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>            TestData</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen 0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Test2</td><td>Short String</td><td>2.180 us</td><td>0.2969 us</td><td>0.0168 us</td><td>0.4005</td><td>841 B</td>
+</tr><tr><td>Test2</td><td>Super @#$ Sdf fd#$3 String</td><td>5.592 us</td><td>0.5679 us</td><td>0.0321 us</td><td>1.4038</td><td>2952 B</td>
+</tr></tbody></table>
+</body>
+</html>
